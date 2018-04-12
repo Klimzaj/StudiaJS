@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+    <h5>onchange</h5>
+    <form onchange="myFunction()"><input name="a" id="a">+<input name="b" id="b">=<input name="c" id="c"></form>
+    <h5>onkeyup</h5>
+    <form onkeyup="myFunction()"><input name="a" id="a">+<input name="b" id="b">=<input name="c" id="c"></form>
+<script> //onkeyup powinno chyba byc w input
+    //poprawic w wolnej chwili :D
+    function myFunction() {
+        var a = document.getElementById("a").value;
+        var b = document.getElementById("b").value;
+        // var c = a + '+' + b;
+        // var d = eval(c);
+        // console.log(d);
+        document.getElementById("c").value = eval(a+"+"+b);
+    }
+</script>
+</body>
+</html>
+
+
