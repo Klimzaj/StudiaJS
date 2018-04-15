@@ -1,0 +1,68 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Zadanie 4</title>
+</head>
+<body>
+    <a href="https://www.onet.pl">1</a>
+    <br/>
+    <a href="https://www.onet.pl" >1</a>
+    <br/>
+    <a href="https://www.onet.pl" >1</a>
+    <br/>
+    <a href="https://www.onet.pl" >1</a>
+    <br/>
+    <a href="https://www.onet.pl">1</a>
+    <img src="http://content.podarki.ru/goods-images/cd28d63f-d95b-48a1-99fb-e504da57e9aa.jpg" width="42" height="42">
+    <img src="http://content.podarki.ru/goods-images/cd28d63f-d95b-48a1-99fb-e504da57e9aa.jpg" width="42" height="42">
+    <img src="http://content.podarki.ru/goods-images/cd28d63f-d95b-48a1-99fb-e504da57e9aa.jpg" width="42" height="42">
+    <img src="http://content.podarki.ru/goods-images/cd28d63f-d95b-48a1-99fb-e504da57e9aa.jpg" width="42" height="42">
+
+    <p href="https://www.google.pl">3</p>
+    <button onclick="takeAllA()">Take all a </button>
+    <button onclick="takeAllHref()" > Take all href</button>
+    <button onclick="takeAllSrc()" > Take all src</button>
+<script>
+    function takeAllA() {
+        var b=document.querySelectorAll("a");
+        console.log(b.length);
+    }
+    function takeAllHref() {
+        var hrefCount = 0;
+        var a = document.querySelectorAll("body");
+        var b = [];
+        a.forEach(element => {
+            let obj = element.children;
+            for(let i =0;i<obj.length;i++)
+            {
+                if(obj.item(i).href != null)
+                {
+                    obj.item(i).innerHTML = obj.item(i).href;
+                    hrefCount++;
+                    b.push([obj.item(i).href,obj.item(i).innerHTML]);
+                }
+            }
+            console.log(b);
+            console.log("href count: " + hrefCount);
+        });
+    }
+    function takeAllSrc() {
+        var a = document.querySelectorAll("body");
+        var b = [];
+        a.forEach(element => {
+            let obj = element.children;
+            for(let i =0;i<obj.length;i++)
+            {
+                if(obj.item(i).src != null)
+                {
+                    b.push(obj.item(i).src);
+                }
+            }
+            console.log(b);
+        });
+    }
+    
+
+</script>
+</body>
+</html>

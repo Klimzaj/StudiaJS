@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<style>
+    #calc {
+        width: 400px;
+        
+    }
+    #numbers {
+        width: 100px;
+    }
+    .button {
+        margin: 10px;
+        width: 50;
+    }
+    #test {
+        padding: 10px;
+    }
+</style>
+<body>
+<div id='calc'>
+        <input id="calcScreen" value="" type="text">
+        <!-- <div id="numbers">
+                <button value="1" >1</button>
+                <button value="2">2</button>
+                <button value="3">3</button>
+                <button value="4">4</button>
+                <button value="5">5</button>
+                <button value="6">6</button>
+                <button value="7">7</button>
+                <button value="8">8</button>
+                <button value="9">9</button>
+            </div>       -->
+</div>
+<div id='test'>
+    <div id="aaaa">
+            <button >1</button>
+            <button >2</button>
+            <button >3</button>
+            <button >4</button>
+            <button >5</button>
+            <button >6</button>
+            <button >7</button>
+            <button >8</button>
+            <button >9</button>
+            <button >-</button>
+            <button >+</button>        
+            <button >*</button>        
+            <button >/</button>        
+            <button >.</button>        
+    </div>
+    <div>
+        <button onclick="wylicz()">=</button>
+    </div>
+
+</div>
+
+<script>
+    
+    var wynik = document.querySelector("#calcScreen");
+    var b=document.querySelectorAll("#aaaa button");
+    for(i of b)
+    {
+        // console.log(i.innerHTML);
+        i.onclick = function () {
+            wynik.value += this.innerHTML;
+        }
+    }
+        // var a = document.getElementsByClassName('but');
+        // console.log(a);
+    
+    function wylicz(){
+        // var a = document.getElementById("calcScreen").value;
+        // var b = document.getElementById("a").value;
+        // console.log(eval(a));
+        document.getElementById("calcScreen").value = eval(document.getElementById("calcScreen").value) 
+    }
+</script>    
+</body>
+</html>
+
+
