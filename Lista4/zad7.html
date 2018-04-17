@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<style>
+    
+</style>
+</head>
+<body>
+        Choose figure:
+        <select onchange="chuj()" name="figure">
+            <option value="Point">Point</option>
+            <option value="Circle">Circle</option>
+            <option value="Rectangle">Rectangle</option>
+          </select>
+        <br>
+        X:
+        <input type="number" name="x" value="">
+        <br>
+        Y:  
+        <input type="number" name="y" value="">
+        <br>
+        A:
+        <input type="number" name="a" value="">
+        <br>
+        B:
+        <input type="number" name="b" value="">
+        <br>
+        R:
+        <input type="number" name="r" value="">
+        <br>
+        Color:
+        <input id="color" type="color" name="color">
+        <br>
+        <br>
+        <input onclick="saveFigure()" type="submit" value="Submit">
+
+<script>
+    function saveFigure(){
+        console.log("figura zapisana");
+        var a = document.querySelectorAll('input');
+        // console.log(document.getElementById("color").value)
+        a.forEach(ff=>{
+            console.log(ff.value);
+        });
+    }
+
+     let chuj = () => {
+        console.log("aaaa");
+    }
+</script>    
+</body>
+</html>
+
+
