@@ -8,45 +8,83 @@
 </head>
 <body>
         Choose figure:
-        <select onchange="chuj()" name="figure">
+        <select o onchange="changeFig()" name="figure">
             <option value="Point">Point</option>
             <option value="Circle">Circle</option>
             <option value="Rectangle">Rectangle</option>
           </select>
         <br>
-        X:
-        <input type="number" name="x" value="">
+        
+        <span id="x" style="display: inline">
+            X:
+            <input type="number" name="x" value="">
+        </span>
         <br>
-        Y:  
-        <input type="number" name="y" value="">
+        <span id="y" style="display: inline">
+            Y:  
+            <input  type="number" name="y" value="">
+        </span>
         <br>
-        A:
-        <input type="number" name="a" value="">
+        <span id="color" style="display: inline">
+                Color:
+                <input  type="color" name="color">
+        </span>
         <br>
-        B:
-        <input type="number" name="b" value="">
+        <span id="r" style="display: none">
+            R:
+            <input type="number" name="r" value="">
+        </span>
         <br>
-        R:
-        <input type="number" name="r" value="">
+        <span id="a" style="display: none">
+            A:
+            <input  type="number" name="a" value="">
+        </span>
         <br>
-        Color:
-        <input id="color" type="color" name="color">
+        <span id="b" style="display: none">
+            B:
+            <input  type="number" name="b" value="">
+        </span>
         <br>
-        <br>
+        
         <input onclick="saveFigure()" type="submit" value="Submit">
 
 <script>
+    var fig = {};
+    
     function saveFigure(){
+        let smalObj = {}
         console.log("figura zapisana");
         var a = document.querySelectorAll('input');
-        // console.log(document.getElementById("color").value)
         a.forEach(ff=>{
-            console.log(ff.value);
+            let a = ff.name;
+            smalObj.push({a:3}); //ff.name.toString()=ff.name.value;
+            console.log(smalObj);
         });
     }
 
-     let chuj = () => {
-        console.log("aaaa");
+     let changeFig = () => {
+        let a = document.querySelector("select");
+        let values = a.value;
+        switch (values) {
+            case "Point":
+            document.getElementById('r').style.display="none";
+            document.getElementById('a').style.display="none"
+            document.getElementById('b').style.display="none"
+                break;
+            case "Circle":
+            document.getElementById('r').style.display="inline";
+            document.getElementById('a').style.display="none"
+            document.getElementById('b').style.display="none"
+            break;
+            case "Rectangle":
+            document.getElementById('r').style.display="none";
+            document.getElementById('a').style.display="inline"
+            document.getElementById('b').style.display="inline"
+                break;
+            default:
+                break;
+        }
+
     }
 </script>    
 </body>
