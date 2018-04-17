@@ -1,0 +1,55 @@
+
+<html>
+
+    <div id="toc" style="float:right;width:20%;border:1px solid grey"></div>	
+    
+    <h1>1.0.0</h1>
+    <h2>1.1.0</h2>
+    <h3>1.1.1</h3>
+    <h3>1.1.2</h3>
+    <h2>1.2.0</h2>
+    <h3>1.2.1</h3>
+    <h3>1.2.2</h3>
+    <h1>2.0.0</h1>
+    <h2>2.1.0</h2>
+    <h3>2.1.1</h3>
+    <h3>2.1.2</h3>
+    <h2>2.2.0</h2>
+    <h3>2.2.1</h3>
+    <h3>2.2.2</h3>
+    <h1>3.0.0</h1>
+    <h2>3.1.0</h2>
+    <h3>3.1.1</h3>
+    <h3>3.1.2</h3>
+    <h2>3.2.0</h2>
+    <h3>3.2.1</h3>
+    <h3>3.2.2</h3>
+    <h1>4.0.0</h1>
+    <h2>4.1.0</h2>
+    <h3>4.1.1</h3>
+    <h3>4.1.2</h3>
+    <h2>4.2.0</h2>
+    <h3>4.2.1</h3>
+    <h3>4.2.2</h3>
+    
+    <script>
+    (function()
+    {   var toc=document.querySelector("#toc");
+        var t=document.querySelectorAll("h1,h2");
+        var s="";
+        var x,id; 
+        for(var i=0;i<t.length;i++)
+        {   x=t[i];
+            if(x.id)
+                id=x.id;
+            else 
+                id=x.id=i; 	
+            s+="<li><a href='#"+id+"'>"+x.innerHTML+"</a></li>";
+        }
+        toc.innerHTML="<ol>"+s+"</ol>";	
+    })();
+    
+    </script>
+        
+    </html>
+    
