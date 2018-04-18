@@ -3,7 +3,6 @@
 <head>
 <title>Page Title</title>
 <style>
-    
 </style>
 </head>
 <body>
@@ -14,7 +13,6 @@
             <option value="Rectangle">Rectangle</option>
           </select>
         <br>
-        
         <span id="x" style="display: inline">
             X:
             <input type="number" name="x" value="">
@@ -45,23 +43,36 @@
             <input  type="number" name="b" value="">
         </span>
         <br>
-        
         <input onclick="saveFigure()" type="submit" value="Submit">
-
 <script>
-    var fig = {};
-    
-    function saveFigure(){
-        let smalObj = {}
-        console.log("figura zapisana");
-        var a = document.querySelectorAll('input');
-        a.forEach(ff=>{
-            let a = ff.name;
-            smalObj.push({a:3}); //ff.name.toString()=ff.name.value;
-            console.log(smalObj);
-        });
+    var figColections = [];
+    function createFig (_name,_x,_y,_color,_r,_a,_b) {
+        this.name = _name;
+        this.x = _x;
+        this.y = _y;
+        this.color = _color;
+        this.r = _r;
+        this.a = _a;
+        this.b = _b;
     }
 
+    function saveFigure(){
+        let smallArray = []
+        console.log("figura zapisana");
+        var a = document.querySelectorAll('input');
+        let b = document.querySelector("select");
+        let selectVal = b.value;
+        smallArray.push(selectVal);
+        a.forEach(ff=>{
+            let a = ff.value;
+            smallArray.push(a);
+        });
+        // console.log(smallArray);
+        let smallObj = new createFig(...smallArray);
+        // console.log(smallObj);
+        figColections.push(smallObj);
+        console.log(figColections);
+    }
      let changeFig = () => {
         let a = document.querySelector("select");
         let values = a.value;
@@ -84,10 +95,7 @@
             default:
                 break;
         }
-
     }
 </script>    
 </body>
 </html>
-
-

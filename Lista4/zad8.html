@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+
+    <script>
+        var fig=[
+            {name:"Point",x:10,y:30},
+            {name:"Circle",x:10,y:30,r:40,color:"green"},
+            {name:"Rectangle",x:10,y:30,a:20,b:40,color:"red"}
+        ];
+        let contains = (_x,_y,_fig) => {            
+            _fig.forEach(element => {
+                let figObj = element;
+                let figName = figObj.name;
+                switch (figName) {
+                case 'Point':
+                    if(figObj.x == _x && figObj.y==_y)
+                    {
+                        console.log(figName);
+                    }
+                    break;
+                case 'Circle':
+                    const deltaX = Math.abs(_x-figObj.x);
+                    const deltaY = Math.abs(_y-figObj.y);
+                    if(Math.sqrt(Math.pow(deltaX,2)+Math.pow(deltaY,2))<= figObj.r)
+                    {
+                        console.log(figName);
+                    }
+                    break;
+                case 'Rectangle':
+                    if(_x >= figObj.x && _x <= figObj.x + figObj.a)
+                    {
+                        if(_y >= figObj.y && _y <= figObj.y+figObj.b)
+                        {
+                            console.log(figName);
+                        }
+                    }
+                    break;
+                default:
+                    console.log("nie ma takiej figury!");
+                    break;
+            }
+            
+            });
+            
+        }
+        contains(10,30,fig);
+    </script>    
+</body>
+</html>
+
+

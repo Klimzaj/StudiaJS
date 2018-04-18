@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <style>
+
+    </style>
+  </head>
+  <body onload="narysuj(figColections,myCanvas2)">
+    <div id="myForm">
+        <form >
+            Choose figure:
+            <select o onchange="changeFig()" name="figure">
+                <option value="Point">Point</option>
+                <option value="Circle">Circle</option>
+                <option value="Rectangle">Rectangle</option>
+              </select>
+            <br>
+            <span id="x" style="display: inline">
+                X:
+                <input type="number" name="x" value="">
+            </span>
+            <br>
+            <span id="y" style="display: inline">
+                Y:  
+                <input  type="number" name="y" value="">
+            </span>
+            <br>
+            <span id="color" style="display: inline">
+                    Color:
+                    <input  type="color" name="color">
+            </span>
+            <br>
+            <span id="r" style="display: none">
+                R:
+                <input type="number" name="r" value="">
+            </span>
+            <br>
+            <span id="a" style="display: none">
+                A:
+                <input  type="number" name="a" value="">
+            </span>
+            <br>
+            <span id="b" style="display: none">
+                B:
+                <input  type="number" name="b" value="">
+            </span>
+            <br>
+            <input onclick="saveFigure()" type="button" value="Confirm">
+       
+            <input type="reset" value="Back">
+        </form>
+        
+    </div>
+    <div id="myCanvas" >
+            <canvas id="drawHere" width="400" height="400" style="border:1px solid #d3d3d3;">fffff</canvas>
+    </div>
+    <script>
+        var figColections = [];
+        function createFig (_name,_x,_y,_color,_r,_a,_b) {  //doczytac w ksiazce
+            this.name = _name;
+            this.x = _x;
+            this.y = _y;
+            this.color = _color;
+            this.r = _r;
+            this.a = _a;
+            this.b = _b;
+        }
+
+        function saveFigure(){
+            let smallArray = []
+            // console.log("figura zapisana");
+            var a = document.querySelectorAll('input');
+            let b = document.querySelector("select");
+            let selectVal = b.value;
+            smallArray.push(selectVal);
+            a.forEach(ff=>{
+                let a = ff.value;
+                smallArray.push(a);
+            });
+            // console.log(smallArray);
+            let smallObj = new createFig(...smallArray);
+            // console.log(smallObj);
+            figColections.push(smallObj);
+            // console.log(figColections);
+            narysuj(figColections,myCanvas2);
+        }
+        let changeFig = () => {
+            let a = document.querySelector("select");
+            let values = a.value;
+            switch (values) {
+                case "Point":
+                document.getElementById('r').style.display="none";
+                document.getElementById('a').style.display="none"
+                document.getElementById('b').style.display="none"
+                    break;
+                case "Circle":
+                document.getElementById('r').style.display="inline";
+                document.getElementById('a').style.display="none"
+                document.getElementById('b').style.display="none"
+                break;
+                case "Rectangle":
+                document.getElementById('r').style.display="none";
+                document.getElementById('a').style.display="inline"
+                document.getElementById('b').style.display="inline"
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        var myCanvas2 = document.getElementById("drawHere");
+        function narysuj(_fig,_canvas)
+        {
+            for(i in _fig)
+            {
+                let figObj = _fig[i];
+                let figname = figObj.name;
+                switch(figname) 
+                {
+                    case "Point":
+                        var punkt2D = _canvas.getContext("2d");
+                        if(figObj.color)
+                        {
+                            punkt2D.strokeStyle = figObj.color;
+                        }
+                        punkt2D.strokeRect(figObj.x, figObj.y, 1, 1);
+                        break;
+                    case 'Circle':
+                        var kolo2D = _canvas.getContext("2d");
+                        kolo2D.beginPath();
+                        kolo2D.arc(figObj.x, figObj.y, figObj.r, 0, 2 * Math.PI);
+                        if(figObj.color)
+                        {
+                            kolo2D.strokeStyle = figObj.color;
+                        }
+                        kolo2D.stroke();
+                        break;
+                    case 'Rectangle':
+                        var prostokat2D = _canvas.getContext("2d");
+                        if(figObj.color)
+                        {
+                            prostokat2D.strokeStyle = figObj.color;
+                        }
+                        prostokat2D.strokeRect(figObj.x, figObj.y, figObj.a, figObj.b);
+                        break;
+                    case 'Wielokat':
+                        var wielokont2D = _canvas.getContext("2d");
+                        wielokont2D.moveTo(figObj.x[0],figObj.x[0]);
+                        for(let s = 1;s<figObj.x.length;s++ )
+                        {
+                            wielokont2D.lineTo(figObj.x[s],figObj.y[s]);
+                        }
+                        wielokont2D.lineTo(figObj.x[0],figObj.x[0]);    
+                        if(figObj.color)
+                        {
+                            wielokont2D.strokeStyle=figObj.color;
+                        }
+                        wielokont2D.stroke();
+                        break;
+                    default:
+                        console.log("Nie ma takiej figury");
+                        break;
+                }
+            }
+        }
+    </script>
+  </body>
+</html>
