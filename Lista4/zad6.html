@@ -26,6 +26,7 @@
                 switch(figname) {
                     case "Punkt":
                         var punkt2D = _canvas.getContext("2d");
+                        punkt2D.beginPath();
                         if(figObj.color)
                         {
                             punkt2D.strokeStyle = figObj.color;
@@ -44,6 +45,7 @@
                         break;
                     case 'Prostokat':
                         var prostokat2D = _canvas.getContext("2d");
+                        prostokat2D.beginPath();
                         if(figObj.color)
                         {
                             prostokat2D.strokeStyle = figObj.color;
@@ -52,6 +54,7 @@
                         break;
                     case 'Wielokat':
                         var wielokont2D = _canvas.getContext("2d");
+                        wielokont2D.beginPath();
                         wielokont2D.moveTo(figObj.x[0],figObj.x[0]);
                         for(let s = 1;s<figObj.x.length;s++ )
                         {
